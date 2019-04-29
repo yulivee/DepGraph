@@ -11,6 +11,8 @@ import * as _ from 'lodash';
 export class DependencyGraph {
     private _dataPromise: Promise<any>;
     private _filteredData: GraphData = new GraphData();
+    private _circleRadius: number = 10;
+    private _arrowHeadSize: number = 10;
     public Data: GraphData = new GraphData();
     constructor(private _dataPath: string, private _svg: d3.Selection<SVGSVGElement, {}, HTMLElement, any>, public Width: number = 800, public Height: number = 800) {
         this.loadData();
@@ -75,10 +77,10 @@ export class DependencyGraph {
             .enter().append('marker')
             .attr('id', d => d)
             .attr('viewBox', '0 -5 10 10')
-            .attr('refX', 15)
-            .attr('refY', -1.5)
-            .attr('markerWidth', 6)
-            .attr('markerHeight', 6)
+            .attr('refX', this._circleRadius + this._arrowHeadSize)
+            .attr('refY', 0)
+            .attr('markerWidth', this._arrowHeadSize)
+            .attr('markerHeight', this._arrowHeadSize)
             .attr('orient', 'auto')
             .append('path')
             .attr('d', 'M0,-5L10,0L0,5');
@@ -86,7 +88,6 @@ export class DependencyGraph {
             .selectAll('path')
             .data(this.Data.Links)
             .join('path')
-            //.attr('stroke-width', d => Math.sqrt(d.target.inboundLinks))
             .attr('class', 'link default')
             .attr('marker-end', 'url(#default)');
         const node = this._svg.append('g')
@@ -97,9 +98,6 @@ export class DependencyGraph {
             .join('g')
             .attr('class', 'node');
         
-        //const _node = node.enter().append('g');
-        //node.exit().remove();
-
         const nodeCircle = node
             .append('circle')
             .on('click', (node) => {
@@ -111,10 +109,9 @@ export class DependencyGraph {
                 node.inboundLinks.forEach(link => link.source.highlightInbound = node.highlightSelf);
                 node.outboundLinks.forEach(link => link.target.highlightOutbound = node.highlightSelf);
             })
-            .attr('r', 10)
-            //.style('fill', d => d.highlight ? '#FF0000' : color(d.outboundLinks.toString()))
+            .attr('r', this._circleRadius)
             .style('fill', d => '#333')
-            //.call(this._drag());
+            .call(this._drag());
 
         const nodeText = node
             .append('text')
@@ -162,6 +159,7 @@ export class DependencyGraph {
         }
 
         array.length = replaceIndex;
+        this._simulation.restart();
     }
 
     public setFilter(value: string | undefined): void {
