@@ -13,8 +13,10 @@ export class DependencyGraph {
     private _filteredData: GraphData = new GraphData();
     private _circleRadius: number = 10;
     private _arrowHeadSize: number = 10;
+    private _xCenter: Array<number>;
     public Data: GraphData = new GraphData();
     constructor(private _dataPath: string, private _svg: d3.Selection<SVGSVGElement, {}, HTMLElement, any>, public Width: number = 800, public Height: number = 800) {
+        this._xCenter = [ this.Width/3-this.Width/6, this.Width/3+this.Width/6 ]
         this.loadData();
     }
     private loadData(): void {
@@ -22,6 +24,7 @@ export class DependencyGraph {
             this.Data.Nodes = _.map(d.nodes, (node: rawNode) => {
                 const newNode = new Node();
                 newNode.name = node.name;
+                newNode.type = node.pan;
                 this.Data.NodeLookup.set(node.name, newNode);
                 return newNode;
             });
@@ -43,7 +46,6 @@ export class DependencyGraph {
             });
         });
     }
-    private _color = d3.scaleOrdinal(d3.schemeCategory10);
     private _drag() {
         var self = this;
         return d3.drag()
@@ -70,7 +72,8 @@ export class DependencyGraph {
             .force('link', d3.forceLink(this.Data.Links).id((d: Node) => d.name).distance(50))
             .force('charge', d3.forceManyBody().strength(10))
             .force('center', d3.forceCenter(this.Width / 2, this.Height / 2))
-            .force('collision', d3.forceCollide().radius(50).strength(0.1));
+            .force('collision', d3.forceCollide().radius(50).strength(0.1))
+            .force('x', d3.forceX().x( (node: Node) => { return this._xCenter[node.type == 'CPAN' ? 1 : 0]; }));
         
         this._svg.append('defs').selectAll('marker')
             .data(['default'])
@@ -102,6 +105,8 @@ export class DependencyGraph {
             .append('circle')
             .on('click', (node) => {
                 const previousHighlight = node.highlightSelf;
+                console.log('Type: '+node.type);
+                console.log( node.type == 'CPAN' ? 'external' : 'internal' );
                 this.Data.Nodes.forEach(node => {
                     node.highlightSelf = node.highlightInbound = node.highlightOutbound = false;
                 });
@@ -110,7 +115,7 @@ export class DependencyGraph {
                 node.outboundLinks.forEach(link => link.target.highlightOutbound = node.highlightSelf);
             })
             .attr('r', this._circleRadius)
-            .style('fill', d => '#333')
+            .style('fill', (node) => this._colorByType(node))
             .call(this._drag());
 
         const nodeText = node
@@ -132,13 +137,25 @@ export class DependencyGraph {
             nodeText
                 .attr('transform', d => 'translate(' + d.x + ',' + d.y + ')');
 
-            nodeCircle.style('stroke', d => d.highlightSelf ? '#0F0' : d.highlightInbound ? '#F00' : '#333');
-            nodeCircle.style('fill', d => d.highlightOutbound ? '#F00' : '#333');
+            nodeCircle.style('stroke', d => d.highlightSelf ? '#0F0' : d.highlightInbound ? '#F00' : this._colorByType(d));
+            nodeCircle.style('fill', d => d.highlightOutbound ? '#F00' : this._colorByType(d));
         });
     }
     private _linkArc(d: Link) {
         return 'M' + d.source.x + ',' + d.source.y + 'A' + 0 + ',' + 0 + ' 0 0,1 ' + d.target.x + ',' + d.target.y;
     }
+
+    private _colorByType ( node: Node ){
+        if ( node.type == 'CPAN' ) {
+                    return '#215117'
+                 } else if ( node.type == 'ECuPAN') {
+                    return '#0c2f68'
+                 } else {
+                     return '#333'
+                 } 
+
+    }
+
     public initialize(): void {
         this._dataPromise.then(() => {
             this.createGraph();

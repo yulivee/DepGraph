@@ -14,4 +14,5 @@ export class Node implements SimulationNodeDatum {
     public highlightOutbound: boolean = false;
     public highlightSelf: boolean = false;
     public name: string;
+    public type: string;
 }
