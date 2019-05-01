@@ -4,6 +4,15 @@
         <meta charset="utf-8">
         <title>Techdemo</title>
         <style>
+
+html {
+  font-family: 'Fira Code', 'IBM Plex Mono', monospace, sans-serif !important;
+}
+
+text {
+  font-family: 'Fira Code', 'IBM Plex Mono', monospace, sans-serif !important;
+}
+
 .link {
   fill: none;
   stroke: #666;
@@ -11,19 +20,24 @@
 }
 
 .link.default {
-  stroke: rgb(0, 0, 0);
+  stroke: #666666;
+}
+
+.link.highlight {
+  stroke: rgb(255, 0, 0);
 }
 
 .node > circle {
+  /*fill: #ccc;*/
   stroke: #333;
   stroke-width: 3.5px;
 }
 
-text {
+/*text {
   font: 10px sans-serif;
   pointer-events: none;
   text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
-}
+}*/
         </style>
     </head>
     <body>

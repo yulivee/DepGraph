@@ -7,8 +7,9 @@ const width = 800, height = 800;
 
 const svg = d3.select('#theGraph')
     .append('svg')
-    .attr('width', width)
-    .attr('height', height);
+    .attr('width', '100%')
+    .attr('height', height)
+    .attr('viewBox', '-400 -400 800 800');
 
 
 const graph = new DependencyGraph('/assets/data.json', svg, height, width);
@@ -22,4 +23,3 @@ d3.select('#filterText').on('input', function () {
 });
 
 graph.initialize();
-
