@@ -165,12 +165,12 @@ export class DependencyGraph {
                 node.inboundLinks.forEach(link =>
                     { 
                       link.source.highlightInbound = node.highlightSelf;
-                      link.highlightInbound = true;
+                      link.highlightInbound = node.highlightSelf;
                     });
                 node.outboundLinks.forEach(link => 
                     { 
                         link.target.highlightOutbound = node.highlightSelf;
-                        link.highlightOutbound = true;
+                        link.highlightOutbound = node.highlightSelf;
                     }
                     );
 
