@@ -1,47 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Techdemo</title>
-        <style>
 
-html {
-  font-family: 'Fira Code', 'IBM Plex Mono', monospace, sans-serif !important;
-}
+<head>
+  <meta charset="utf-8">
+  <title>Perl Dependency Viewer v0.1.0</title>
+  <style>
+    html {
+      font-family: 'Fira Code Mono', 'IBM Plex Mono', monospace, sans-serif !important;
+      font-size: '10pt';
+    }
 
-text {
-  font-family: 'Fira Code', 'IBM Plex Mono', monospace, sans-serif !important;
-}
+    text {
+      font-family: 'Fira Code Mono', 'IBM Plex Mono', monospace, sans-serif !important;
+      font-size: '10pt';
+    }
 
-.link {
-  fill: none;
-  stroke: #666;
-  stroke-opacity: 0.6;
-}
+    .link {
+      fill: none;
+      stroke: #666;
+      stroke-opacity: 0.6;
+    }
 
-.link.default {
-  stroke: #666666;
-}
+    .link.default {
+      stroke: #666666;
+    }
 
-.link.highlight {
-  stroke: rgb(255, 0, 0);
-}
+    .link.highlight {
+      stroke: rgb(255, 0, 0);
+    }
 
-.node > circle {
-  /*fill: #ccc;*/
-  stroke: #333;
-  stroke-width: 3.5px;
-}
+    .node>circle {
+      /*fill: #ccc;*/
+      stroke: #333;
+      stroke-width: 3.5px;
+    }
 
-/*text {
+    #filterText {
+      position: absolute;
+      z-index: 1;
+    }
+
+    /*text {
   font: 10px sans-serif;
   pointer-events: none;
   text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
 }*/
-        </style>
-    </head>
-    <body>
-        <input id="filterText" name="filterText" type="text" />
-        <div id="theGraph"></div>
-    </body>
+  </style>
+</head>
+
+<body>
+  <input id="filterText" name="filterText" type="text" />
+  <div id="theGraph"></div>
+</body>
+
 </html>

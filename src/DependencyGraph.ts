@@ -46,7 +46,7 @@ export class DependencyGraph {
             });
         });
     }
-    private _color = d3.scaleOrdinal(d3.schemeCategory10);
+
     private _drag() {
         var self = this;
         return d3.drag()
@@ -74,8 +74,8 @@ export class DependencyGraph {
             .force('link', d3.forceLink(this.Data.Links).id((d: Node) => d.name).strength(0.05))
             //.force('charge', d3.forceManyBody().strength(-0.5))
             //.force('r', d3.forceRadial(150, 0, 0).strength(0.2))
-            .force('highlightX', d3.forceX(150).strength(0))
-            .force('highlightY', d3.forceY(150).strength(0))
+            .force('highlightX', d3.forceX(this.Height).strength(0))
+            .force('highlightY', d3.forceY(this.Width/3).strength(0))
             .force('center', d3.forceCenter())
             .force('collision', d3.forceCollide(50).strength(0.05));
 
@@ -84,10 +84,10 @@ export class DependencyGraph {
             .enter().append('marker')
             .attr('id', d => d)
             .attr('viewBox', '0 -5 10 10')
-            .attr('refX', 10 + 15 + 1.5)
+            .attr('refX', 10 + 13)
             .attr('refY', -1.5)
-            .attr('markerWidth', 6)
-            .attr('markerHeight', 6)
+            .attr('markerWidth', 8)
+            .attr('markerHeight', 8)
             .attr('orient', 'auto')
             .append('path')
             .attr('d', 'M0,-5L10,0L0,5');
@@ -116,7 +116,8 @@ export class DependencyGraph {
                 .attr('transform', d => 'translate(' + d.x + ',' + d.y + ')');
             const nodeTexts = nodes
                 .select('text')
-                .attr('transform', d => 'translate(' + d.x + ',' + d.y + ')');
+                .attr('transform', d => 'translate(' + d.x + ',' + d.y + ')')
+                .attr('font-size', '0.7em');
 
             nodeCircles.style('stroke', d => d.highlightSelf ? '#0F0' : d.highlightInbound ? '#F00' : '#333');
             nodeCircles.style('fill', d => d.highlightOutbound ? '#F00' : '#333');

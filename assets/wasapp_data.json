@@ -1,0 +1,411 @@
+{
+    "nodes": [
+        {
+            "name": "Utils::VerifyHash",
+            "repository": "VerifyHash",
+            "pan" : "ECuPAN"
+        },
+        {
+            "name": "Utils::IBM::AIXBugs",
+            "repository": "IBM_AIXBugs",
+            "pan" : "ECuPAN"
+        },
+        {
+            "name": "Utils::RequestFile",
+            "repository": "RequestFile",
+            "pan" : "ECuPAN"
+        },
+        {
+            "name": "Utils::Log",
+            "repository": "Log",
+            "pan" : "ECuPAN"
+        },
+        {
+            "name": "Utils::FileTools",
+            "repository": "FileTools",
+            "pan" : "ECuPAN"
+        },
+        {
+            "name": "Utils::Common",
+            "repository": "Common",
+            "pan" : "ECuPAN"
+        },
+        {
+            "name": "Utils::UTF8_BOM",
+            "repository": "UTF8-BOM",
+            "pan" : "ECuPAN"
+        },
+        {
+            "name": "Utils::EncodePerl56",
+            "repository": "EncodePerl56",
+            "pan" : "ECuPAN"
+        },
+        {
+            "name": "Utils::Daemon",
+            "repository": "Daemon",
+            "pan" : "ECuPAN"
+        },
+        {
+            "name": "Utils::Daemon::RequestQueue",
+            "repository": "Daemon",
+            "pan" : "ECuPAN"
+        },
+        {
+            "name": "Utils::Daemon::Request",
+            "repository": "Daemon",
+            "pan" : "ECuPAN"
+        },
+        {
+            "name": "Utils::WAS::AppDeploy",
+            "repository": "was_app_deploy",
+            "pan" : "ECuPAN"
+        },
+        {
+            "name": "was_app_deploy",
+            "repository": "was_app_deploy",
+            "pan" : "ECuPAN"
+        },
+        {
+            "name": "Socket",
+            "pan" : "CPAN"
+        },
+        {
+            "name": "File::Basename",
+            "pan" : "CPAN"
+
+        },
+        {
+            "name": "Exporter",
+            "pan" : "CPAN"
+
+        },
+        {
+            "name": "IPC::Open2",
+            "pan" : "CPAN"
+
+        },
+        {
+            "name": "POSIX",
+            "pan" : "CPAN"
+
+        },
+        {
+            "name": "Fcntl",
+            "pan" : "CPAN"
+
+        },
+        {
+            "name": "MIME::QuotedPrint",
+            "pan" : "CPAN"
+
+        },
+        {
+            "name": "Encode",
+            "pan" : "CPAN"
+
+        },
+        {
+            "name": "Cwd",
+            "pan" : "CPAN"
+
+        },
+        {
+            "name": "English",
+            "pan" : "CPAN"
+
+        },
+        {
+            "name": "Mouse",
+            "repository": "",
+            "pan" : "CPAN"
+
+        },
+        {
+            "name": "Mouse::Util::TypeConstraints",
+            "pan" : "CPAN"
+
+        },
+        {
+            "name": "File::Slurp",
+            "pan" : "CPAN"
+
+        },
+        {
+            "name": "Try::Tiny",
+            "pan" : "CPAN"
+
+        },
+        {
+            "name": "Module::Load",
+            "pan" : "CPAN"
+
+        },
+        {
+            "name": "Mouse::Role",
+            "pan" : "CPAN"
+
+        },
+        {
+            "name": "MouseX::SimpleConfig",
+            "pan" : "CPAN"
+
+        },
+        {
+            "name": "MouseX::Getopt",
+            "pan" : "CPAN"
+
+        },
+        {
+            "name": "IPC::Open3",
+            "pan" : "CPAN"
+
+        },
+        {
+            "name": "Email::Valid",
+            "pan" : "CPAN"
+
+        }
+    ],
+    "links": [
+        {
+            "source": "Utils::VerifyHash",
+            "target": "Utils::IBM::AIXBugs"
+        },
+        {
+            "source": "Utils::VerifyHash",
+            "target": "Socket"
+        },
+        {
+            "source": "Utils::VerifyHash",
+            "target": "File::Basename"
+        },
+        {
+            "source": "Utils::IBM::AIXBugs",
+            "target": "Exporter"
+        },
+        {
+            "source": "Utils::RequestFile",
+            "target": "Utils::Log"
+        },
+        {
+            "source": "Utils::FileTools",
+            "target": "Utils::Log"
+        },
+        {
+            "source": "Utils::Common",
+            "target": "Utils::IBM::AIXBugs"
+        },
+        {
+            "source": "Utils::Common",
+            "target": "Utils::UTF8_BOM"
+        },
+        {
+            "source": "Utils::Common",
+            "target": "Utils::Log"
+        },
+        {
+            "source": "Utils::Common",
+            "target": "Exporter"
+        },
+        {
+            "source": "Utils::Common",
+            "target": "IPC::Open2"
+        },
+        {
+            "source": "Utils::Common",
+            "target": "POSIX"
+        },
+        {
+            "source": "Utils::Common",
+            "target": "File::Basename"
+        },
+        {
+            "source": "Utils::Common",
+            "target": "Fcntl"
+        },
+        {
+            "source": "Utils::Common",
+            "target": "Socket"
+        },
+        {
+            "source": "Utils::Common",
+            "target": "MIME::QuotedPrint"
+        },
+        {
+            "source": "Utils::Common",
+            "target": "Encode"
+        },
+        {
+            "source": "Utils::Common",
+            "target": "Utils::EncodePerl56"
+        },
+        {
+            "source": "Utils::Daemon",
+            "target": "File::Basename"
+        },
+        {
+            "source": "Utils::Daemon",
+            "target": "Cwd"
+        },
+        {
+            "source": "Utils::Daemon",
+            "target": "English"
+        },
+        {
+            "source": "Utils::Daemon",
+            "target": "Exporter"
+        },
+        {
+            "source": "Utils::Daemon::Request",
+            "target": "Utils::Log"
+        },
+        {
+            "source": "Utils::Daemon::Request",
+            "target": "Utils::Common"
+        },
+        {
+            "source": "Utils::Daemon::Request",
+            "target": "Utils::VerifyHash"
+        },
+        {
+            "source": "Utils::Daemon::Request",
+            "target": "Utils::RequestFile"
+        },
+        {
+            "source": "Utils::Daemon::Request",
+            "target": "Mouse"
+        },
+        {
+            "source": "Utils::Daemon::Request",
+            "target": "Mouse::Util::TypeConstraints"
+        },
+        {
+            "source": "Utils::Daemon::Request",
+            "target": "English"
+        },
+        {
+            "source": "Utils::Daemon::Request",
+            "target": "File::Basename"
+        },
+        {
+            "source": "Utils::Daemon::Request",
+            "target": "Encode"
+        },
+        {
+            "source": "Utils::Daemon::Request",
+            "target": "File::Slurp"
+        },
+        {
+            "source": "Utils::Daemon::Request",
+            "target": "Try::Tiny"
+        },
+        {
+            "source": "Utils::Daemon::Request",
+            "target": "Module::Load"
+        },
+        {
+            "source": "Utils::Daemon::RequestQueue",
+            "target": "Utils::Daemon::Request"
+        },
+        {
+            "source": "Utils::Daemon::RequestQueue",
+            "target": "Utils::FileTools"
+        },
+        {
+            "source": "Utils::Daemon::RequestQueue",
+            "target": "Utils::Log"
+        },
+        {
+            "source": "Utils::Daemon::RequestQueue",
+            "target": "Mouse"
+        },
+        {
+            "source": "Utils::Daemon::RequestQueue",
+            "target": "Mouse::Util::TypeConstraints"
+        },
+        {
+            "source": "Utils::Daemon::RequestQueue",
+            "target": "English"
+        },
+        {
+            "source": "Utils::Daemon::RequestQueue",
+            "target": "File::Basename"
+        },
+        {
+            "source": "Utils::Daemon::RequestQueue",
+            "target": "POSIX"
+        },
+        {
+            "source": "Utils::WAS::AppDeploy",
+            "target": "Utils::Daemon"
+        },
+        {
+            "source": "Utils::WAS::AppDeploy",
+            "target": "Utils::Daemon::Request"
+        },
+        {
+            "source": "Utils::WAS::AppDeploy",
+            "target": "Utils::Daemon::RequestQueue"
+        },
+        {
+            "source": "Utils::WAS::AppDeploy",
+            "target": "Utils::Log"
+        },
+        {
+            "source": "Utils::WAS::AppDeploy",
+            "target": "Utils::Common"
+        },
+        {
+            "source": "Utils::WAS::AppDeploy",
+            "target": "Mouse"
+        },
+        {
+            "source": "Utils::WAS::AppDeploy",
+            "target": "Mouse::Role"
+        },
+        {
+            "source": "Utils::WAS::AppDeploy",
+            "target": "MouseX::SimpleConfig"
+        },
+        {
+            "source": "Utils::WAS::AppDeploy",
+            "target": "MouseX::Getopt"
+        },
+        {
+            "source": "Utils::WAS::AppDeploy",
+            "target": "Try::Tiny"
+        },
+        {
+            "source": "Utils::WAS::AppDeploy",
+            "target": "English"
+        },
+        {
+            "source": "Utils::WAS::AppDeploy",
+            "target": "File::Basename"
+        },
+        {
+            "source": "Utils::WAS::AppDeploy",
+            "target": "IPC::Open3"
+        },
+        {
+            "source": "Utils::WAS::AppDeploy",
+            "target": "Email::Valid"
+        },
+        {
+            "source": "was_app_deploy",
+            "target": "Utils::WAS::AppDeploy"
+        },
+        {
+            "source": "was_app_deploy",
+            "target": "File::Basename"
+        },
+        {
+            "source": "was_app_deploy",
+            "target": "Cwd"
+        },
+        {
+            "source": "was_app_deploy",
+            "target": "English"
+        }
+    ]
+}
